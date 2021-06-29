@@ -1,6 +1,12 @@
 function connectToSpotify(access_token, token_type) {
 
-    let artists = ['3sva1UjOJOx6cGISZOpItl', '3CjlHNtplJyTf9npxaPl5w'];
+    let artists = [];
+
+    $('.cards .card').each(function() {
+        let id = $(this).children('.spotify-id').text();
+        $(this).children('.popularity').attr('id', id);
+        artists.push(id);
+    });
 
     $.ajax({
         url: 'https://api.spotify.com/v1/artists',
